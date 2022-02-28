@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/40c5d73e0b.js" crossorigin="anonymous"></script>
     <title>HVACareTaker</title>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-grid">
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -18,28 +18,78 @@
               </svg>
           </a>
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            <li><a href="#" class="nav-link px-2 link-secondary">Strona główna</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Funkcje</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Panel serwisowy</a></li>
           </ul>
           <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
+            <button type="button" class="btn btn-outline-primary me-2">Logowanie</button>
+            <button type="button" class="btn btn-primary">Rejestracja</button>
           </div>
         </header>
-    </div>
         <main>
+          <div class="text-center py-4 px-5">
+              <div class="col-md-auto col-lg-12 mb-4 border-bottom">
+                <h1>
+                  HVACareTaker
+                  <small class="text-muted"> - zarządzanie systemami HVAC</small>
+                </h1>
+                <p>Aplikacja do kompleksowego zarządzania budynkowymi systemami wentylacji, klimatyzacji i chłodnictwa. Umożliwia w wygodny sposób zarzadzanie bazą danych posiadanych urządzeń (wraz z ich szczegółowymi danymi technicznymi). Dodawanie nowych urządzeń, logi czynności serwisowych, automatyczne sprawdzanie aktualności terminów kontroli szczelności i przypominanie o zbliżających się terminach.
+                </p>
+              </div>
+              <div class="container px-4 py-3 shadow rounded" id="icon-grid">
+                <h3 class="pb-2 border-bottom">Funkcje aplikacji HVACareTaker</h3>
+            
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+                  <div class="col d-flex align-items-start">
+                    <div>
+                      <h4 class="fw-bold mb-0">Dodawanie</h4>
+                      <p>Swobodnie dodawaj do bazy nowe urządzenia!</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex align-items-start">
+                    <div>
+                      <h4 class="fw-bold mb-0">Aktualizacja danych</h4>
+                      <p>W miarę potrzeb aktualizuj dane o urządzeniach!</p>
+                    </div>
+                  </div>
+                  <div class="col d-flex align-items-start">
+                    <div>
+                      <h4 class="fw-bold mb-0">Czynności serwisowe</h4>
+                      <p>W roli serwisanta dodawaj przeprowadzone czynności serwisowe do urządzenia!</p>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Kontrole szczelności</h4>
+                        <p>Bądź na bieżąco z terminami wykonania kontroli szczelności!</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Zestawienia urządzęń</h4>
+                        <p>Generuj zestawienia posiadanych urządzęń</p>
+                      </div>
+                    </div>
+                    <div class="col d-flex align-items-start">
+                      <div>
+                        <h4 class="fw-bold mb-0">Wyszukiwanie</h4>
+                        <p>Wygodnie i szybko wyszukuj informacje o urządzeniach!</p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>
         </main>
-        <div class="container">
         <footer class="footer fixed-bottom mt-auto py-3 bg-light">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Strona główna</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Funkcje</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Informacje</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Kontakt</a></li>
             </ul>
             <p class="text-center text-muted">© 2022 Łukasz Skarbek</p>
             </footer>
