@@ -14,7 +14,8 @@ INSERT INTO
     category(id, name, description)
 VALUES
     (1, 'Wentylacja', 'Urządzenia do nawiewania i wywiewania powietrza z obsługiwnaych pomieszczeń'),
-    (2, 'Klimatyzacja', 'Urządzenia do kontroli klimatu wewnętrznego w obsługiwanych pomieszczeniach');
+    (2, 'Klimatyzacja', 'Urządzenia do kontroli klimatu wewnętrznego w obsługiwanych pomieszczeniach'),
+    (3, 'Chłodnictwo', 'Urządzenia do wytwarzania chłodu');
 
 INSERT INTO
     device(id, name, serial_number, model, production_date, producent_id, value, cooling_power, refrigerant_id, refrigerant_mass, localization, category_id)

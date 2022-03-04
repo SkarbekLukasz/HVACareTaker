@@ -18,8 +18,8 @@
                 </svg>
             </a>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Strona główna</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
+              <li><a href="../" class="nav-link px-2 link-secondary">Strona główna</a></li>
+              <li><a href="../userpanel" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
               <li><a href="#" class="nav-link px-2 link-dark">Panel serwisowy</a></li>
             </ul>
             <div class="col-md-3 text-end">
@@ -35,8 +35,10 @@
                         <h4>Wybierz kategorię urządzenia: </h4>
                                 <select class="form-select py-2" id="kategoria" aria-label="kategoria">
                                     <option selected>Wybierz kategorię</option>
-                                    <option value="1">Wentylacja</option>
-                                    <option value="2">Klimatyzacja</option>
+                                    <div th:remove="all-but-first">
+                                        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" value="1">Wentylacja</option>
+                                        <option value="2">Klimatyzacja</option>
+                                    </div>     
                                 </select>
                     </div>
                     <hr class="my-4 bg-light">
@@ -68,10 +70,12 @@
                                 <label for="producent" class="form-label">Producent</label>
                                 <select class="form-select" id="producent" aria-label="Producent" required>
                                     <option selected>Wybierz producenta</option>
-                                    <option value="1">LG</option>
-                                    <option value="2">Carrier</option>
-                                    <option value="3">STULZ</option>
-                                    <option value="4">Mitsubishi</option>
+                                    <div th:remove="all-but-first">
+                                        <option th:each="producent : ${producents}" th:value="${producent.id}" th:text="${producent.name}" value="1">LG</option>
+                                        <option value="2">Carrier</option>
+                                        <option value="3">STULZ</option>
+                                        <option value="4">Mitsubishi</option>
+                                    </div>
                                   </select>
                             </div>
                             <div class="col-10 text-start mb-2">
@@ -88,10 +92,12 @@
                                 <label for="refrigerant" class="form-label">Czynnik chłodniczy</label>
                                 <select class="form-select" id="refrigerant" aria-label="Czynnik chłodniczy">
                                     <option selected>Wybierz czynnik chłodniczy</option>
-                                    <option value="1">R410A</option>
-                                    <option value="2">R134A</option>
-                                    <option value="3">R32</option>
-                                    <option value="4">R407C</option>
+                                    <div th:remove="all-but-first">
+                                        <option th:each="refrigerant : ${refrigerants}" th:value="${refrigerant.id}" th:text="${refrigerant.name}" value="1">R410A</option>
+                                        <option value="2">R134A</option>
+                                        <option value="3">R32</option>
+                                        <option value="4">R407C</option>
+                                    </div>
                                   </select>
                             </div>
                             <div class="col-10 text-start mb-2">
@@ -107,11 +113,11 @@
                     <button class="btn-lg btn-primary">Dodaj urządzenie</button>
                 </form>
             </div>
-            <hr class="my-4"
+            <hr class="my-4">
         </main>
         <footer class="footer mt-auto py-3 bg-light">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Strona główna</a></li>
+                <li class="nav-item"><a href="../" class="nav-link px-2 text-muted">Strona główna</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Informacje</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Kontakt</a></li>
             </ul>
