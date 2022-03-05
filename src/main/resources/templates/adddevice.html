@@ -33,12 +33,12 @@
                     <hr class="my-2">
                     <div class="col-4 align-items-center">
                         <h4>Wybierz kategorię urządzenia: </h4>
-                                <select class="form-select py-2" id="kategoria" aria-label="kategoria">
+                                <select class="form-select py-2" name="kategoria" id="kategoria" aria-label="kategoria">
                                     <option selected>Wybierz kategorię</option>
                                     <div th:remove="all-but-first">
                                         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" value="1">Wentylacja</option>
                                         <option value="2">Klimatyzacja</option>
-                                    </div>     
+                                    </div>
                                 </select>
                     </div>
                     <hr class="my-4 bg-light">
@@ -106,7 +106,7 @@
                             </div>
                             <div class="col-10 text-start mb-2">
                                 <label for="local" class="form-label">Lokalizacja</label>
-                                <textarea class="form-control" id="local" style="height: 150px;"></textarea> 
+                                <textarea class="form-control" id="local" style="height: 150px;"></textarea>
                             </div>
                         </div>
                     </div>

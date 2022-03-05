@@ -6,9 +6,11 @@ import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.producent.ProducentService;
 import ls.hvacaretaker.refrigerant.Refrigerant;
 import ls.hvacaretaker.refrigerant.RefrigerantService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -35,4 +37,5 @@ public class AddDeviceController {
         model.addAttribute("refrigerants", refrigerantList);
         return "adddevice";
     }
+
 }
