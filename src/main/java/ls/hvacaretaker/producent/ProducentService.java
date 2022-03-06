@@ -3,18 +3,25 @@ package ls.hvacaretaker.producent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProducentService {
 
-    private ProducentRepository producentRepository;
+    private final ProducentRepository producentRepository;
+    private final ProducentMapper producentMapper;
 
-    public ProducentService(ProducentRepository producentRepository) {
+    public ProducentService(ProducentRepository producentRepository, ProducentMapper producentMapper) {
         this.producentRepository = producentRepository;
+        this.producentMapper = producentMapper;
     }
 
     public List<Producent> getAllProducents() {
-        List<Producent> producentList = producentRepository.findAll();
-        return producentList;
+        return producentRepository.findAll();
+    }
+
+    public Producent getProducentEntity(Long id) {
+        Optional<Producent> producentFound = producentRepository.findById(id);
+        return producentFound.orElseThrow(ProducentNotFoundException::new);
     }
 }

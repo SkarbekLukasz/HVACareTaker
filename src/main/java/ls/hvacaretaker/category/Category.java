@@ -1,6 +1,7 @@
 package ls.hvacaretaker.category;
 
 import ls.hvacaretaker.device.Device;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Category {
     private String name;
     private String description;
     @OneToMany(mappedBy = "category")
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     private List<Device> devices;
 
     public Long getId() {
@@ -71,5 +73,9 @@ public class Category {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, devices);
+    }
+
+    public void addDevice(Device device) {
+        devices.add(device);
     }
 }

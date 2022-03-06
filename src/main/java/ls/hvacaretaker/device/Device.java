@@ -3,10 +3,12 @@ package ls.hvacaretaker.device;
 import ls.hvacaretaker.category.Category;
 import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.refrigerant.Refrigerant;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.sql.Ref;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -23,16 +25,16 @@ public class Device {
     @Column(nullable = false)
     private String model;
     @Column(nullable = false)
-    private LocalDateTime productionDate;
+    private Date productionDate;
     @ManyToOne
     @JoinColumn(name = "producent_id")
     private Producent producent;
-    private BigDecimal value;
-    private double coolingPower;
+    private Double value;
+    private Double coolingPower;
     @ManyToOne
     @JoinColumn(name = "refrigerant_id")
     private Refrigerant refrigerant;
-    private double refrigerantMass;
+    private Double refrigerantMass;
     private String localization;
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -70,11 +72,11 @@ public class Device {
         this.model = model;
     }
 
-    public LocalDateTime getProductionDate() {
+    public Date getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(LocalDateTime productionDate) {
+    public void setProductionDate(Date productionDate) {
         this.productionDate = productionDate;
     }
 
@@ -86,19 +88,19 @@ public class Device {
         this.producent = producent;
     }
 
-    public BigDecimal getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
-    public double getCoolingPower() {
+    public Double getCoolingPower() {
         return coolingPower;
     }
 
-    public void setCoolingPower(double coolingPower) {
+    public void setCoolingPower(Double coolingPower) {
         this.coolingPower = coolingPower;
     }
 
@@ -110,11 +112,11 @@ public class Device {
         this.refrigerant = refrigerant;
     }
 
-    public double getRefrigerantMass() {
+    public Double getRefrigerantMass() {
         return refrigerantMass;
     }
 
-    public void setRefrigerantMass(double refrigerantMass) {
+    public void setRefrigerantMass(Double refrigerantMass) {
         this.refrigerantMass = refrigerantMass;
     }
 

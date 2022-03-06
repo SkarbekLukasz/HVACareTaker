@@ -4,6 +4,7 @@ import ls.hvacaretaker.device.Device;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "refrigerant")
@@ -41,5 +42,20 @@ public class Refrigerant {
         this.devices = devices;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Refrigerant that = (Refrigerant) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(devices, that.devices);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, devices);
+    }
+
+    public void addDevice(Device device) {
+        devices.add(device);
+    }
 }

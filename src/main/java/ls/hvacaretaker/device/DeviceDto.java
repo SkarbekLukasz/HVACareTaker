@@ -4,8 +4,7 @@ import ls.hvacaretaker.category.Category;
 import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.refrigerant.Refrigerant;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class DeviceDto {
 
@@ -13,12 +12,12 @@ public class DeviceDto {
     private String name;
     private String serialNumber;
     private String model;
-    private LocalDateTime productionDate;
+    private Date productionDate;
     private Producent producent;
-    private BigDecimal value;
-    private double coolingPower;
+    private Double value;
+    private Double coolingPower;
     private Refrigerant refrigerant;
-    private double refrigerantMass;
+    private Double refrigerantMass;
     private String localization;
     private Category category;
 
@@ -54,11 +53,11 @@ public class DeviceDto {
         this.model = model;
     }
 
-    public LocalDateTime getProductionDate() {
+    public Date getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(LocalDateTime productionDate) {
+    public void setProductionDate(Date productionDate) {
         this.productionDate = productionDate;
     }
 
@@ -70,19 +69,19 @@ public class DeviceDto {
         this.producent = producent;
     }
 
-    public BigDecimal getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
-    public double getCoolingPower() {
+    public Double getCoolingPower() {
         return coolingPower;
     }
 
-    public void setCoolingPower(double coolingPower) {
+    public void setCoolingPower(Double coolingPower) {
         this.coolingPower = coolingPower;
     }
 
@@ -94,11 +93,11 @@ public class DeviceDto {
         this.refrigerant = refrigerant;
     }
 
-    public double getRefrigerantMass() {
+    public Double getRefrigerantMass() {
         return refrigerantMass;
     }
 
-    public void setRefrigerantMass(double refrigerantMass) {
+    public void setRefrigerantMass(Double refrigerantMass) {
         this.refrigerantMass = refrigerantMass;
     }
 
