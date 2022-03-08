@@ -20,7 +20,7 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category getCategoryEntity(Long id) {
+    public Category getCategoryEntity(Long id) throws CategoryNotFoundException {
         Optional<Category> categoryFound = categoryRepository.findById(id);
         return categoryFound.orElseThrow(CategoryNotFoundException::new);
     }

@@ -20,7 +20,7 @@ public class ProducentService {
         return producentRepository.findAll();
     }
 
-    public Producent getProducentEntity(Long id) {
+    public Producent getProducentEntity(Long id) throws ProducentNotFoundException {
         Optional<Producent> producentFound = producentRepository.findById(id);
         return producentFound.orElseThrow(ProducentNotFoundException::new);
     }

@@ -17,7 +17,7 @@ public class DeviceService {
     }
 
     @Transactional
-    public void saveDevice(DeviceDto deviceDto) {
+    public void saveDevice(DeviceDto deviceDto) throws DeviceAlreadyExistException {
         Device deviceToSave = deviceMapper.toEntity(deviceDto);
         Optional<Device> deviceCheck = deviceRepository.findBySerialNumberIgnoreCase(deviceToSave.getSerialNumber());
         if(deviceCheck.isPresent()) {

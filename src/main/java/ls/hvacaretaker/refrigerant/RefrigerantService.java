@@ -21,7 +21,7 @@ public class RefrigerantService {
         return refrigerantRepository.findAll();
     }
 
-    public Refrigerant getRefrigerantEntity(Long id) {
+    public Refrigerant getRefrigerantEntity(Long id) throws  RefrigerantNotFoundException {
         Optional<Refrigerant> refrigerantFound = refrigerantRepository.findById(id);
         return refrigerantFound.orElseThrow(RefrigerantNotFoundException::new);
     }

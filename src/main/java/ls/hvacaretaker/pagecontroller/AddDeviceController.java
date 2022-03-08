@@ -1,13 +1,18 @@
 package ls.hvacaretaker.pagecontroller;
 
 import ls.hvacaretaker.category.Category;
+import ls.hvacaretaker.category.CategoryNotFoundException;
 import ls.hvacaretaker.category.CategoryService;
+import ls.hvacaretaker.common.Message;
+import ls.hvacaretaker.device.DeviceAlreadyExistException;
 import ls.hvacaretaker.device.DeviceDto;
 import ls.hvacaretaker.device.DeviceService;
 import ls.hvacaretaker.producent.Producent;
+import ls.hvacaretaker.producent.ProducentNotFoundException;
 import ls.hvacaretaker.producent.ProducentRepository;
 import ls.hvacaretaker.producent.ProducentService;
 import ls.hvacaretaker.refrigerant.Refrigerant;
+import ls.hvacaretaker.refrigerant.RefrigerantNotFoundException;
 import ls.hvacaretaker.refrigerant.RefrigerantService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -71,11 +76,21 @@ public class AddDeviceController {
         deviceDto.setSerialNumber(serialnumber);
         deviceDto.setModel(devicemodel);
         deviceDto.setProductionDate(date);
-        deviceDto.setProducent(producentService.getProducentEntity(producent));
+        try {
+            deviceDto.setProducent(producentService.getProducentEntity(producent));
+        } catch (ProducentNotFoundException e) {
+            model.addAttribute("message", new Message("message", "Brak producenta o wskazanym id w bazie danych"));
+            return "message";
+        }
         deviceDto.setValue(cost);
         deviceDto.setCoolingPower(load);
         if(refrigerant != null) {
-            deviceDto.setRefrigerant(refrigerantService.getRefrigerantEntity(refrigerant));
+            try{
+                deviceDto.setRefrigerant(refrigerantService.getRefrigerantEntity(refrigerant));
+            } catch (RefrigerantNotFoundException e) {
+                model.addAttribute("message", new Message("message","Brak czynnika chłodniczego o wskazanym id w bazie danych"));
+                return "message";
+            }
         }
         else {
             deviceDto.setRefrigerant(null);
@@ -83,8 +98,18 @@ public class AddDeviceController {
         deviceDto.setRefrigerantMass(mass);
         deviceDto.setLocalization(localization);
         Long categoryId = Long.parseLong((String) session.getAttribute("categoryid"));
-        deviceDto.setCategory(categoryService.getCategoryEntity(categoryId));
-        deviceService.saveDevice(deviceDto);
+        try {
+            deviceDto.setCategory(categoryService.getCategoryEntity(categoryId));
+        } catch (CategoryNotFoundException e) {
+            model.addAttribute("message", new Message("404 Not found", "Brak kategorii o wskazanym id w bazie danych."));
+            return "message";
+        }
+        try {
+            deviceService.saveDevice(deviceDto);
+        } catch (DeviceAlreadyExistException e) {
+            model.addAttribute("message", new Message("405 Bad request", "Urządzenie o podanym numerze seryjnym już istnieje w bazie danych"));
+            return "message";
+        }
         return "success";
     }
 
