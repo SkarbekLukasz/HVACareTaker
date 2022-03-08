@@ -110,7 +110,8 @@ public class AddDeviceController {
             model.addAttribute("message", new Message("405 Bad request", "Urządzenie o podanym numerze seryjnym już istnieje w bazie danych"));
             return "message";
         }
-        return "success";
+        model.addAttribute("message", new Message("Sukces!", "Pomyślnie dodano nowe urządzenie do bazy"));
+        return "message";
     }
 
 }
