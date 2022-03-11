@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface DeviceRepository extends JpaRepository<Device, Long> {
     List<Device> findAll();
     Optional<Device> findBySerialNumberIgnoreCase(String serial);
+    List<Device> findAllByNameContainingIgnoreCaseOrSerialNumberContainingIgnoreCase(String name, String name2);
 }

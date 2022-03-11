@@ -18,8 +18,8 @@
                 </svg>
             </a>
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Strona główna</a></li>
-              <li><a href="#" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
+              <li><a href="../" th:href="@{/}" class="nav-link px-2 link-secondary">Strona główna</a></li>
+              <li><a href="/userpanel" th:href="@{/userpanel}" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
               <li><a href="#" class="nav-link px-2 link-dark">Panel serwisowy</a></li>
             </ul>
             <div class="col-md-3 text-end">
@@ -32,18 +32,18 @@
                 <hr class="my-2">
             </div>
             <div class="d-grid">
-                <p class="text-start pb-2">Urządzenia możesz wyszukiwać na podstawie dowolnych danych opisujących urządzenie np. nazwa, numer seryjny, model itp.:</p>
-                <form>
+                <p class="text-start pb-2">Urządzenia można wyszukiwać na podstawie nazwy urządzenia lub numeru seryjnego:</p>
+                <form action="/userpanel/searchdevice" method="get" th:action="@{/userpanel/searchdevice}" th:method="get">
                     <div class="row g-5 text-center justify-content-center">
                         <div class="col-6">
                             <label class="form-label" for="search">Wyszukiwanie:</label> 
-                            <input type="text" class="form-control" id="search" placeholder="Nazwa urządzenia...">
+                            <input type="text" class="form-control" th:name="search" name="search" id="search" placeholder="Nazwa urządzenia...">
                             <button class="btn btn-primary mt-2" type="submit">Szukaj</button>
                         </div>
                         <hr>
                     </div>
                 </form>
-                <table class="table">
+                <table class="table" th:if="${searchquery} != null">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -54,13 +54,13 @@
                             <th scope="col">Edycja</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Agregat Carrier 30KAV</td>
-                            <td>12345678</td>
-                            <td>30KAV</td>
-                            <td>Carrier</td>
+                    <tbody th:remove="all-but-first">
+                        <tr th:each="device : ${devicesList}">
+                            <th scope="row" th:text="${device.id}">1</th>
+                            <td th:text="${device.name}">Agregat Carrier 30KAV</td>
+                            <td th:text="${device.serialNumber}">12345678</td>
+                            <td th:text="${device.model}">30KAV</td>
+                            <td th:text="${device.producent.name}">Carrier</td>
                             <td>
                                 <a href="#">Wyświetl</a>
                                 <a href="#">Edycja</a>
@@ -83,7 +83,7 @@
         </main>
         <footer class="footer fixed-bottom mt-auto py-3 bg-light">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Strona główna</a></li>
+                <li class="nav-item"><a href="../" th:href="@{/}" class="nav-link px-2 text-muted">Strona główna</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Informacje</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Kontakt</a></li>
             </ul>
