@@ -11,4 +11,11 @@ public class ProducentMapper {
         producentToDto.setName(producent.getName());
         return producentToDto;
     }
+
+    public Producent toEntity(ProducentDto producentDto) {
+        Producent entity = new Producent();
+        entity.setName(producentDto.getName());
+        entity.setDevices(producentDto.getDeviceList());
+        return entity;
+    }
 }

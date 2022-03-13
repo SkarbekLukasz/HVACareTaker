@@ -58,7 +58,7 @@ public class AddDeviceController {
         return "adddevice";
     }
 
-    @PostMapping("/userpanel/adddevice/success")
+    @PostMapping("/userpanel/adddevice/message")
     public String saveNewDevice(@RequestParam String devicename,
                                 @RequestParam String serialnumber,
                                 @RequestParam String devicemodel,
