@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProducentService {
@@ -40,5 +41,11 @@ public class ProducentService {
         producentDto.setDeviceList(deviceList);
         Producent producentToSave = producentMapper.toEntity(producentDto);
         producentRepository.save(producentToSave);
+    }
+
+    public List<ProducentDto> findSpecificProducent(String name) {
+        return producentRepository.findByNameContainingIgnoreCase(name).stream()
+                .map(producentMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
