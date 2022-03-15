@@ -1,10 +1,13 @@
 package ls.hvacaretaker.pagecontroller;
 
+import ls.hvacaretaker.common.Message;
 import ls.hvacaretaker.device.DeviceDto;
+import ls.hvacaretaker.device.DeviceNotFoundException;
 import ls.hvacaretaker.device.DeviceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -28,5 +31,16 @@ public class SearchDeviceController {
         return "searchdevice";
     }
 
-
+    @GetMapping("/userpanel/device/{id}/view")
+    public String viewDevice(@PathVariable Long id, Model model) {
+        DeviceDto deviceFound;
+        try {
+            deviceFound = deviceService.findSpecificDeviceById(id);
+        } catch (DeviceNotFoundException e) {
+            model.addAttribute("message", new Message("Brak urządzenia", "Nie znaleziono urządzenia o wskazanym ID"));
+            return "message";
+        }
+        model.addAttribute("device", deviceFound);
+        return "viewdevice";
+    }
 }

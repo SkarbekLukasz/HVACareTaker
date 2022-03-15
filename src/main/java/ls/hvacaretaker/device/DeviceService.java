@@ -39,4 +39,9 @@ public class DeviceService {
                 .map(deviceMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public DeviceDto findSpecificDeviceById(Long id) throws DeviceNotFoundException {
+        Optional<Device> deviceById = deviceRepository.findById(id);
+        return deviceMapper.toDto(deviceById.orElseThrow(DeviceNotFoundException::new));
+    }
 }

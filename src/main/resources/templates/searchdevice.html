@@ -62,7 +62,7 @@
                             <td th:text="${device.model}">30KAV</td>
                             <td th:text="${device.producent.name}">Carrier</td>
                             <td>
-                                <a href="#">Wyświetl</a>
+                                <a href="#" th:href="@{|/userpanel/device/${device.id}/view|}">Wyświetl</a>
                                 <a href="#">Edycja</a>
                             </td>
                         </tr>
