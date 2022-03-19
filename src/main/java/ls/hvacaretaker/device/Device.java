@@ -8,6 +8,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Ref;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class Device {
     @Column(nullable = false)
     private String model;
     @Column(nullable = false)
-    private Date productionDate;
+    private LocalDate productionDate;
     @ManyToOne
     @JoinColumn(name = "producent_id")
     private Producent producent;
@@ -72,11 +73,11 @@ public class Device {
         this.model = model;
     }
 
-    public Date getProductionDate() {
+    public LocalDate getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(Date productionDate) {
+    public void setProductionDate(LocalDate productionDate) {
         this.productionDate = productionDate;
     }
 

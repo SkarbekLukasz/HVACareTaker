@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class AddDeviceController {
     public String saveNewDevice(@RequestParam String devicename,
                                 @RequestParam String serialnumber,
                                 @RequestParam String devicemodel,
-                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+                                @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
                                 @RequestParam Long producent,
                                 @RequestParam Double cost,
                                 @RequestParam(required = false) Double load,

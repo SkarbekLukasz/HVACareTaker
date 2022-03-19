@@ -31,7 +31,122 @@
             <h2 class="text-start" th:text="|Dane urządzenia: ${device.name}|">Dane urządzenia:</h2>
             <hr class="my-2">
         </div>
-
+        <div class="d-grid my-2">
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="text-start">
+                        <p class="fw-bold fs-6">Nazwa urządzenia:</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.name}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Numer seryjny</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.serialNumber}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Model urządzenia:</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.model}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Data produkcji: </p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.productionDate}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Producent:</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.producent.name}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Wartość</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="|${device.value} PLN|">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Kategoria:</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.category.name}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <div class="row g-2 pb-2">
+                <div class="col-sm-2 col-lg-2">
+                    <div class="col-10 text-start">
+                        <p class="fw-bold fs-6">Lokalizacja:</p>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-lg-10 justify-content-start">
+                    <p class="fs-6"th:text="${device.localization}">nazwa urządzenia</p>
+                </div>
+            </div>
+            <th:block th:if="${device.category.id} != 1">
+                <div class="row g-2 pb-2">
+                    <div class="col-sm-2 col-lg-2">
+                        <div class="col-10 text-start">
+                            <p class="fw-bold fs-6">Moc chłodnicza:</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-lg-10 justify-content-start">
+                        <p class="fs-6"th:text="|${device.coolingPower} kW|">nazwa urządzenia</p>
+                    </div>
+                    <div class="row g-2 pb-2">
+                        <div class="col-sm-2 col-lg-2">
+                            <div class="col-10 text-start">
+                                <p class="fw-bold fs-6">Czynnik chłodniczy:</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-lg-10 justify-content-start">
+                            <p class="fs-6"th:text="${device.refrigerant.name}">nazwa urządzenia</p>
+                        </div>
+                    </div>
+                    <div class="row g-2 pb-2">
+                        <div class="col-sm-2 col-lg-2">
+                            <div class="col-10 text-start">
+                                <p class="fw-bold fs-6">Masa czynnika chłodniczego:</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-lg-10 justify-content-start">
+                            <p class="fs-6"th:text="|${device.refrigerantMass} kg|">nazwa urządzenia</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- dododania kontrole szczelności-->
+            </th:block>
+        </div>
+        <!-- do dodania czynności serwisowe-->
     </main>
     <footer class="footer fixed-bottom mt-auto py-3 bg-light">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">

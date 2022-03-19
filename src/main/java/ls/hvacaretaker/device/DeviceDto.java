@@ -4,6 +4,7 @@ import ls.hvacaretaker.category.Category;
 import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.refrigerant.Refrigerant;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DeviceDto {
@@ -12,7 +13,7 @@ public class DeviceDto {
     private String name;
     private String serialNumber;
     private String model;
-    private Date productionDate;
+    private LocalDate productionDate;
     private Producent producent;
     private Double value;
     private Double coolingPower;
@@ -53,11 +54,11 @@ public class DeviceDto {
         this.model = model;
     }
 
-    public Date getProductionDate() {
+    public LocalDate getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(Date productionDate) {
+    public void setProductionDate(LocalDate productionDate) {
         this.productionDate = productionDate;
     }
 
