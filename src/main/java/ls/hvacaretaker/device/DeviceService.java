@@ -44,4 +44,10 @@ public class DeviceService {
         Optional<Device> deviceById = deviceRepository.findById(id);
         return deviceMapper.toDto(deviceById.orElseThrow(DeviceNotFoundException::new));
     }
+
+    @Transactional
+    public void deleteSpecificDevice(Long id) throws DeviceNotFoundException {
+        Optional<Device> deviceById = deviceRepository.findById(id);
+        deviceRepository.delete(deviceById.orElseThrow(DeviceNotFoundException::new));
+    }
 }
