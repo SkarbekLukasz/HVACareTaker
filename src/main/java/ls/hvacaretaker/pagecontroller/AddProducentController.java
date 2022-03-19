@@ -23,13 +23,13 @@ public class AddProducentController {
     }
 
     @PostMapping("/userpanel/addproducent/message")
-    public String saveNewProducent(@RequestParam String producentname, Model model) {
+    public String saveNewProducent(@RequestParam String producentname, @RequestParam String contactInfo, Model model) {
         if(producentname == null) {
             model.addAttribute("message", new Message("Błąd przy dodawaniu producenta", "Nie udało się pomyślnie dodać nowego producenta do bazy. Pole formularza było puste"));
             return "message";
         }
         try{
-            producentService.save(producentname);
+            producentService.save(producentname, contactInfo);
         } catch (ProducentAlreadyExistException e) {
             model.addAttribute("message", new Message("Błąd przy dodawaniu producenta", "Producent o wskazanej nazwie już istnieje w bazie danych."));
             return "message";

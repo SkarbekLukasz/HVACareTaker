@@ -5,10 +5,10 @@ VALUES
     (2, 'R134A');
 
 INSERT INTO
-    producent(id, name)
+    producent(id, name, contact_info)
 VALUES
-    (1, 'Carrier'),
-    (2, 'STULZ');
+    (1, 'Carrier', 'qwefqwergqwer'),
+    (2, 'STULZ', 'wqerghhaerherhewawefbtshrth');
 
 INSERT INTO
     category(id, name, description)

@@ -15,7 +15,9 @@ public class Producent {
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
-    @OneToMany(mappedBy = "producent")
+    @Column(length = 1024)
+    private String contactInfo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producent")
     private List<Device> devices;
 
     public Long getId() {
@@ -42,20 +44,28 @@ public class Producent {
         this.devices = devices;
     }
 
+    public void addDevice(Device device) {
+        devices.add(device);
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producent producent = (Producent) o;
-        return Objects.equals(id, producent.id) && Objects.equals(name, producent.name) && Objects.equals(devices, producent.devices);
+        return Objects.equals(id, producent.id) && Objects.equals(name, producent.name) && Objects.equals(contactInfo, producent.contactInfo) && Objects.equals(devices, producent.devices);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, devices);
-    }
-
-    public void addDevice(Device device) {
-        devices.add(device);
+        return Objects.hash(id, name, contactInfo, devices);
     }
 }

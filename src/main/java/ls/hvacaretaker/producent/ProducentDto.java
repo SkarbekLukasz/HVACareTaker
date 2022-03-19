@@ -8,6 +8,7 @@ public class ProducentDto {
 
     private Long id;
     private String name;
+    private String contactInfo;
     private List<Device> deviceList;
 
     public Long getId() {
@@ -32,5 +33,13 @@ public class ProducentDto {
 
     public void setDeviceList(List<Device> deviceList) {
         this.deviceList = deviceList;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 }

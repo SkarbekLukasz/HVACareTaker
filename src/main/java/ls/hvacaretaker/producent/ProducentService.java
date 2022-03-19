@@ -30,13 +30,14 @@ public class ProducentService {
     }
 
     @Transactional
-    public void save(String name) throws ProducentAlreadyExistException {
+    public void save(String name, String contactInfo) throws ProducentAlreadyExistException {
         Optional<Producent> producentSearch = producentRepository.findByNameIgnoreCase(name);
         if(producentSearch.isPresent()) {
             throw new ProducentAlreadyExistException();
         }
         ProducentDto producentDto = new ProducentDto();
         producentDto.setName(name);
+        producentDto.setContactInfo(contactInfo);
         List<Device> deviceList = new ArrayList<>();
         producentDto.setDeviceList(deviceList);
         Producent producentToSave = producentMapper.toEntity(producentDto);
@@ -47,5 +48,17 @@ public class ProducentService {
         return producentRepository.findByNameContainingIgnoreCase(name).stream()
                 .map(producentMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public ProducentDto findProducentByid(Long id) {
+        return producentRepository.findById(id)
+                .map(producentMapper::toDto)
+                .orElseThrow(ProducentNotFoundException::new);
+    }
+
+    @Transactional
+    public void deleteSpecificProducent(Long id) throws ProducentNotFoundException {
+        Optional<Producent> producentSearch = producentRepository.findById(id);
+        producentRepository.delete(producentSearch.orElseThrow(ProducentNotFoundException::new));
     }
 }
