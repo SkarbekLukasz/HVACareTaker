@@ -11,4 +11,16 @@ public class MainController {
     public String getMain(Model model) {
         return "index";
     }
+
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout) {
+        if (error != null) {
+            model.addAttribute("errorMsg", "Twój login lub hasło są nieprawidłowe");
+        }
+
+        if (logout != null) {
+            model.addAttribute("msg", "Zostałeś pomyślnie wylogowany");
+        }
+        return "login";
+    }
 }
