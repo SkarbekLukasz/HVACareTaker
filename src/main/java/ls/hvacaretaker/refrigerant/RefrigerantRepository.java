@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface RefrigerantRepository extends JpaRepository<Refrigerant, Long> {
     List<Refrigerant> findAll();
     Optional<Refrigerant> findByNameIgnoreCase(String name);
+    List<Refrigerant> findAllByNameContainingIgnoreCase(String name);
 }

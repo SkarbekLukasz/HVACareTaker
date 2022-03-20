@@ -16,7 +16,7 @@ public class Refrigerant {
     @Column(nullable = false, unique = true)
     private String name;
     private int GWP;
-    @OneToMany(mappedBy = "refrigerant")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "refrigerant")
     private List<Device> devices;
 
     public Long getId() {

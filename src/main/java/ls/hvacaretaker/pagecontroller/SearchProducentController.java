@@ -1,7 +1,6 @@
 package ls.hvacaretaker.pagecontroller;
 
 import ls.hvacaretaker.common.Message;
-import ls.hvacaretaker.producent.ProducentAlreadyExistException;
 import ls.hvacaretaker.producent.ProducentDto;
 import ls.hvacaretaker.producent.ProducentNotFoundException;
 import ls.hvacaretaker.producent.ProducentService;
@@ -26,7 +25,7 @@ public class SearchProducentController {
     public String getSearchProducent(@RequestParam(required = false) String search, Model model) {
         if(search != null) {
             model.addAttribute("searchquery", search);
-            List<ProducentDto> producentDtos = producentService.findSpecificProducent(search);
+            List<ProducentDto> producentDtos = producentService.findSpecificProducents(search);
             model.addAttribute("producents", producentDtos);
             return "searchproducent";
         }

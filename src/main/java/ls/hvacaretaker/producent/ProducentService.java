@@ -44,7 +44,7 @@ public class ProducentService {
         producentRepository.save(producentToSave);
     }
 
-    public List<ProducentDto> findSpecificProducent(String name) {
+    public List<ProducentDto> findSpecificProducents(String name) {
         return producentRepository.findByNameContainingIgnoreCase(name).stream()
                 .map(producentMapper::toDto)
                 .collect(Collectors.toList());
