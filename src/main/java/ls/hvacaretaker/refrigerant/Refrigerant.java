@@ -15,6 +15,7 @@ public class Refrigerant {
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
+    private int GWP;
     @OneToMany(mappedBy = "refrigerant")
     private List<Device> devices;
 
@@ -42,20 +43,30 @@ public class Refrigerant {
         this.devices = devices;
     }
 
+    public int getGWP() {
+        return GWP;
+    }
+
+    public void setGWP(int GWP) {
+        this.GWP = GWP;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Refrigerant that = (Refrigerant) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(devices, that.devices);
+        return GWP == that.GWP && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(devices, that.devices);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, devices);
+        return Objects.hash(id, name, GWP, devices);
     }
 
     public void addDevice(Device device) {
         devices.add(device);
     }
+
+
 }

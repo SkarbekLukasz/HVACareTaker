@@ -1,8 +1,8 @@
 INSERT INTO
-    refrigerant(id, name)
+    refrigerant(id, name, gwp)
 VALUES
-    (1, 'R410A'),
-    (2, 'R134A');
+    (1, 'R410A', 2088),
+    (2, 'R134A', 1430);
 
 INSERT INTO
     producent(id, name, contact_info)
