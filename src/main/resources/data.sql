@@ -23,6 +23,20 @@ VALUES
     (1, 'Agregat chłodniczy Carrier 30KAV', '12345678', '30KAV', '2020-06-25', 1, 500000.00, 580.00, 2, 120, 'podest techniczny', 2);
 
 INSERT INTO
+    roles(id, name)
+VALUES
+    (1, 'USER'),
+    (2, 'TECHNICIAN'),
+    (3, 'ADMIN');
+
+INSERT INTO
     users(id, email, password, first_name, last_name, account_expiration, account_lock, credential_expiration, account_activation)
 VALUES
-    (1, 'l.skarbek@wp.pl', '$2a$12$p7f..QR.17qcbB6Qd0.Hku2cEyCsXsa4x.xe4KrZPPVFg9lQNkRGm', 'Łukasz', 'Skarbek', true, true,true, true);
+    (1, 'l.skarbek@wp.pl', '$2a$12$p7f..QR.17qcbB6Qd0.Hku2cEyCsXsa4x.xe4KrZPPVFg9lQNkRGm', 'Łukasz', 'Skarbek', true, true,true, true),
+    (2, '3101katarzyna@gmail.com', '$2a$12$G/4iYC6pCogLoanuC7QjuOJfqCBclyM4D3LZuGyAiTm.6DwkRWpJy', 'Katarzyna', 'Skarbek', true, true,true, true);
+
+INSERT INTO
+    users_roles(user_id, role_id)
+VALUES
+    (1, 3),
+    (2, 1);

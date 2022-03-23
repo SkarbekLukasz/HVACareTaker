@@ -44,12 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/userpanel/**", "/servicepanel/**").authenticated()
+                .antMatchers("/userpanel/**").hasAnyAuthority("USER", "TECHNICIAN", "ADMIN")
+                .antMatchers("/servicepanel/**").hasAnyAuthority("TECHNICIAN", "ADMIN")
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                .formLogin().loginPage("/login").permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
     }
