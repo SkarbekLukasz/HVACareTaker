@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +23,12 @@
             <li><a href="/userpanel" th:href="@{/userpanel}" class="nav-link px-2 link-dark">Panel użytkownika</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Panel serwisowy</a></li>
           </ul>
-          <div class="col-md-3 text-end">
+          <div class="col-md-3 text-end" sec:authorize="isAnonymous()">
             <a href="#" th:href="@{/login}" class="btn btn-outline-primary me-2">Logowanie</a>
             <a href="#" th:href="@{/register}" class="btn btn-primary">Rejestracja</a>
+          </div>
+          <div class="col-md-3 text-end" sec:authorize="isAuthenticated()">
+             <button type="button" class="btn btn-outline-primary me-2">Moje konto</button>
           </div>
         </header>
         <main>
