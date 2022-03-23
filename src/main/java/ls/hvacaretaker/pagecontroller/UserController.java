@@ -2,19 +2,20 @@ package ls.hvacaretaker.pagecontroller;
 
 import ls.hvacaretaker.common.Message;
 import ls.hvacaretaker.user.User;
-import ls.hvacaretaker.user.UserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ls.hvacaretaker.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.management.relation.RoleNotFoundException;
+
 @Controller
 public class UserController {
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/register")
@@ -25,14 +26,12 @@ public class UserController {
 
     @PostMapping("/process_register")
     public String processRegister(User user, Model model) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        user.setAccountActivation(false);
-        user.setAccountExpiration(true);
-        user.setAccountLock(true);
-        user.setCredentialExpiration(true);
-        userRepository.save(user);
+        try {
+            userService.saveNewUser(user);
+        } catch (RoleNotFoundException e) {
+            e.getMessage();
+        }
+
         model.addAttribute("message", new Message("Sukces!", "Pomyślnie zarejestrowano nowego użytkownika."));
         return "message";
     }

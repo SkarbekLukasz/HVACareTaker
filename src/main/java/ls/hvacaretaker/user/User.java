@@ -110,4 +110,8 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public void addRoles(Role role) {
+        getRoles().add(role);
+    }
 }
