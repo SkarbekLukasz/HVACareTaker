@@ -19,6 +19,9 @@ public class DeviceMapper {
         deviceToDto.setRefrigerant(device.getRefrigerant());
         deviceToDto.setCoolingPower(device.getCoolingPower());
         deviceToDto.setRefrigerantMass(device.getRefrigerantMass());
+        deviceToDto.setJobList(device.getJobList());
+        deviceToDto.setLastHermeticControl(device.getLastHermeticControl());
+        deviceToDto.setNextHermeticControl(device.getNextHermeticControl());
         return deviceToDto;
     }
 
@@ -36,6 +39,9 @@ public class DeviceMapper {
         entity.setRefrigerant(deviceDto.getRefrigerant());
         entity.setCoolingPower(deviceDto.getCoolingPower());
         entity.setRefrigerantMass(deviceDto.getRefrigerantMass());
+        entity.setNextHermeticControl(deviceDto.getNextHermeticControl());
+        entity.setLastHermeticControl(deviceDto.getLastHermeticControl());
+        entity.setJobList(deviceDto.getJobList());
         return entity;
     }
 }

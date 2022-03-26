@@ -127,13 +127,66 @@
                             <p class="fs-6"th:text="|${device.refrigerantMass} kg|">nazwa urządzenia</p>
                         </div>
                     </div>
+                    <div class="row g-2 pb-2">
+                        <div class="col-sm-2 col-lg-2">
+                            <div class="col-10 text-start">
+                                <p class="fw-bold fs-6">Ostatnia kontrola szczelności:</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-lg-10 justify-content-start">
+                            <p class="fs-6"th:text="${device.lastHermeticControl}">nazwa urządzenia</p>
+                        </div>
+                    </div>
+                    <div class="row g-2 pb-2">
+                        <div class="col-sm-2 col-lg-2">
+                            <div class="col-10 text-start">
+                                <p class="fw-bold fs-6">Następna kontrola szczelności:</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 col-lg-10 justify-content-start">
+                            <p class="fs-6"th:text="${device.nextHermeticControl}">nazwa urządzenia</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- dododania kontrole szczelności-->
+            </th:block>
+            <th:block th:if="${!device.jobList.isEmpty()}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Typ czynności</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Data dodania czynności</th>
+                        <th scope="col">Data wykonania czynności</th>
+                        <th scope="col">Opis czynności</th>
+                    </tr>
+                    </thead>
+                    <tbody th:remove="all-but-first">
+                    <tr th:each="job : ${device.jobList}">
+                        <th scope="row" th:text="${device.jobList.indexOf(job)+1}">1</th>
+                        <td th:text="${job.jobType.getJobName()}">Agregat Carrier 30KAV</td>
+                        <td th:text="${job.author}">12345678</td>
+                        <td th:text="${job.jobAddTime}">30KAV</td>
+                        <td th:text="${job.jobEndTime}">Carrier</td>
+                        <td th:text="${job.jobDescription}">Carrier</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Agregat Carrier 30KAV</td>
+                        <td>12345678</td>
+                        <td>30KAV</td>
+                        <td>Carrier</td>
+                        <td>
+                            <a href="#">Wyświetl</a>
+                            <a href="#">Usuń</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </th:block>
         </div>
-        <!-- do dodania czynności serwisowe-->
     </main>
-    <th:block th:replace="fragment/fragments :: common-footer-fixed"></th:block>
+    <th:block th:replace="fragment/fragments :: common-footer-unfixed"></th:block>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

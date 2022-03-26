@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,6 +49,7 @@
                             <td>
                                 <a href="#" th:href="@{|/userpanel/device/${device.id}/view|}">Wyświetl</a>
                                 <a href="#" th:href="@{|/userpanel/device/${device.id}/delete|}">Usuń</a>
+                                <a href="#" sec:authorize="hasAnyAuthority('ADMIN', 'TECHNICIAN')" th:href="@{|/servicepanel/device/${device.id}/addjob|}">Dodaj czynność</a>
                             </td>
                         </tr>
                         <tr>

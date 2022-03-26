@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,62 @@
     <div class="container">
         <th:block th:replace="fragment/fragments :: common-header"></th:block>
         <main>
-            
+            <div class="d-grid my-2 text-center">
+                <h2 class="text-start" th:text="|Dodaj czynności serwisowe dla: ${device.name}|">Dane urządzenia:</h2>
+                <hr class="my-2">
+            </div>
+            <div class="d-grid my-2">
+                <div class="row g-2 pb-2">
+                    <div class="col-sm-2 col-lg-2">
+                        <div class="text-start">
+                            <p class="fw-bold fs-6">Nazwa urządzenia:</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-lg-10 justify-content-start">
+                        <p class="fs-6"th:text="${device.name}">nazwa urządzenia</p>
+                    </div>
+                </div>
+                <div class="row g-2 pb-2">
+                    <div class="col-sm-2 col-lg-2">
+                        <div class="col-10 text-start">
+                            <p class="fw-bold fs-6">Numer seryjny</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-lg-10 justify-content-start">
+                        <p class="fs-6"th:text="${device.serialNumber}">nazwa urządzenia</p>
+                    </div>
+                </div>
+                <hr class="mb-3">
+                <div class="row p-2 ">
+                    <form action="#" th:action="@{|/servicepanel/device/${device.id}/addjob/success|}" method="post">
+                        <span>Wybierz rodzaj czynności:</span>
+                        <div class="d-flex col-lg-6 col-sm-12 p-2">
+                            <div class="col-6">
+                                <label for="hermetictest">Kontrola szczelności</label>
+                                <input type="radio" id="hermetictest" name="actiontype" th:value="HERMETICTEST" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="servicejob">Prace serwisowe</label>
+                                <input type="radio" id="servicejob" name="actiontype" th:value="SERVICEJOB" required>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start p-2">
+                            <label for="acitonlog">Dodaj czynnoość:</label>
+                            <textarea rows="8" name="actionlog" id="acitonlog" required></textarea>
+                        </div>
+                        <div class="row col-lg-3 col-sm-6 justify-content-start p-2">
+                            <label for="jobenddate" class="form-label">Data wykonania czynności</label>
+                            <input th:type="date" type="date" name="jobenddate" class="form-control" id="jobenddate" required>
+                        </div>
+                        <p th:text="|Autor: ${detail.getFullName()}|">Autor:</p>
+                        <div class="row col-lg-2 col-sm-4 offset-5 my-4">
+                            <button class="btn-lg btn-primary">Dodaj czynność</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
-        <th:block th:replace="fragment/fragments :: common-footer-fixed"></th:block>
+        <th:block th:replace="fragment/fragments :: common-footer-unfixed"></th:block>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

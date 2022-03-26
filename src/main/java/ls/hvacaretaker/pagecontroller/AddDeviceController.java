@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -105,6 +105,8 @@ public class AddDeviceController {
             model.addAttribute("message", new Message("404 Not found", "Brak kategorii o wskazanym id w bazie danych."));
             return "message";
         }
+        deviceDto.setJobList(new ArrayList<>());
+        deviceDto.setLastHermeticControl(LocalDate.now());
         try {
             deviceService.saveDevice(deviceDto);
         } catch (DeviceAlreadyExistException e) {

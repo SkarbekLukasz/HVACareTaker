@@ -1,11 +1,12 @@
 package ls.hvacaretaker.device;
 
 import ls.hvacaretaker.category.Category;
+import ls.hvacaretaker.job.Job;
 import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.refrigerant.Refrigerant;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 public class DeviceDto {
 
@@ -21,6 +22,9 @@ public class DeviceDto {
     private Double refrigerantMass;
     private String localization;
     private Category category;
+    private List<Job> jobList;
+    private LocalDate lastHermeticControl;
+    private LocalDate nextHermeticControl;
 
     public Long getId() {
         return id;
@@ -116,5 +120,29 @@ public class DeviceDto {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Job> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        this.jobList = jobList;
+    }
+
+    public LocalDate getLastHermeticControl() {
+        return lastHermeticControl;
+    }
+
+    public void setLastHermeticControl(LocalDate lastHermeticControl) {
+        this.lastHermeticControl = lastHermeticControl;
+    }
+
+    public LocalDate getNextHermeticControl() {
+        return nextHermeticControl;
+    }
+
+    public void setNextHermeticControl(LocalDate nextHermeticControl) {
+        this.nextHermeticControl = nextHermeticControl;
     }
 }
