@@ -49,6 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .mvcMatchers("/userpanel/**").hasAnyAuthority("USER", "TECHNICIAN", "ADMIN")
                 .mvcMatchers("/servicepanel/**").hasAnyAuthority("TECHNICIAN", "ADMIN")
+                .mvcMatchers("/accountdetails").authenticated()
+                .mvcMatchers("/user/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

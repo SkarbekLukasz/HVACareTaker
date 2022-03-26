@@ -1,5 +1,9 @@
 package ls.hvacaretaker.pagecontroller;
 
+import ls.hvacaretaker.security.CustomUserDetails;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,5 +26,12 @@ public class MainController {
             model.addAttribute("msg", "Zostałeś pomyślnie wylogowany");
         }
         return "login";
+    }
+
+    @GetMapping("/accountdetails")
+    public String accountDetails(Model model, @CurrentSecurityContext SecurityContext securityContext) {
+        CustomUserDetails userDetails = (CustomUserDetails) securityContext.getAuthentication().getPrincipal();
+        model.addAttribute("userdetails", userDetails);
+        return "accountdetails";
     }
 }

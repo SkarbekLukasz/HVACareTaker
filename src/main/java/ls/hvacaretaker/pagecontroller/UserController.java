@@ -6,7 +6,9 @@ import ls.hvacaretaker.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.management.relation.RoleNotFoundException;
 
@@ -29,10 +31,32 @@ public class UserController {
         try {
             userService.saveNewUser(user);
         } catch (RoleNotFoundException e) {
-            e.getMessage();
+            model.addAttribute("message", new Message("Błąd", e.getMessage()));
+            return "message";
         }
 
         model.addAttribute("message", new Message("Sukces!", "Pomyślnie zarejestrowano nowego użytkownika."));
+        return "message";
+    }
+
+    @GetMapping("/user/{id}/changepassword")
+    public String changePasswordForm(@PathVariable Long id, Model model) {
+        model.addAttribute("userid", id);
+        return "passwordchanger";
+    }
+
+    @PostMapping("/user/{id}/changepassword")
+    public String changePasswordPosted(@PathVariable Long id,
+                                       Model model,
+                                       @RequestParam String oldPassword,
+                                       @RequestParam String newPassword) {
+        try {
+            userService.changeUserPassword(id, oldPassword, newPassword);
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("message", new Message("Błąd!", "Podano niewłaściwe obecne hasło."));
+            return "message";
+        }
+            model.addAttribute("message", new Message("Sukces!", "Hasło zostało zmienione."));
         return "message";
     }
 }

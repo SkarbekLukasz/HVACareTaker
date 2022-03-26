@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.RoleNotFoundException;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -28,5 +29,18 @@ public class UserService {
         user.setCredentialExpiration(true);
         user.addRoles(roleRepository.findByName("USER").orElseThrow(RoleNotFoundException::new));
         userRepository.save(user);
+    }
+
+    public void changeUserPassword(Long id, String oldPassword, String newPassword) throws IllegalArgumentException {
+        Optional<User> existingUser = userRepository.findById(id);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        existingUser.ifPresent(user -> {
+            if (bCryptPasswordEncoder.matches(oldPassword, user.getPassword())) {
+                user.setPassword(bCryptPasswordEncoder.encode(newPassword));
+                userRepository.save(user);
+            } else {
+                throw new IllegalArgumentException();
+            }
+        });
     }
 }
