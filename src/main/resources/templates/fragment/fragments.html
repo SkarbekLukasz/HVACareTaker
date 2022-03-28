@@ -14,7 +14,6 @@
     </a>
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="" th:href="@{/}" class="nav-link px-2 link-secondary">Strona główna</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Funkcje</a></li>
         <li><a href="/userpanel" th:href="@{/userpanel}" class="nav-link px-2 link-dark" sec:authorize="hasAnyAuthority('USER', 'ADMIN', 'TECHNICIAN')">Panel użytkownika</a></li>
     </ul>
     <div class="col-md-3 text-end" sec:authorize="isAnonymous()">

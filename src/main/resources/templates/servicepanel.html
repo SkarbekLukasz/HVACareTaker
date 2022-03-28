@@ -41,19 +41,19 @@
                 <div class="row p-2 ">
                     <form action="#" th:action="@{|/servicepanel/device/${device.id}/addjob/success|}" method="post">
                         <span>Wybierz rodzaj czynności:</span>
-                        <div class="d-flex col-lg-6 col-sm-12 p-2">
-                            <div class="col-6">
-                                <label for="hermetictest">Kontrola szczelności</label>
-                                <input type="radio" id="hermetictest" name="actiontype" th:value="HERMETICTEST" required>
-                            </div>
-                            <div class="col-6">
-                                <label for="servicejob">Prace serwisowe</label>
-                                <input type="radio" id="servicejob" name="actiontype" th:value="SERVICEJOB" required>
-                            </div>
+                        <div class="list-group mx-0 mb-3">
+                            <label class="list-group-item d-flex gap-2 col-3">
+                                <input class="form-check-input flex-shrink-0" type="radio" name="actiontype" id="hermetictest" value="" th:value="HERMETICTEST" checked="">
+                                <span>Kontrola szczelności</span>
+                            </label>
+                            <label class="list-group-item d-flex gap-2 col-3">
+                                <input class="form-check-input flex-shrink-0" type="radio" name="actiontype" id="servicejob" value="" th:value="SERVICEJOB">
+                                <span>Prace serwisowe</span>
+                            </label>
                         </div>
-                        <div class="row justify-content-start p-2">
-                            <label for="acitonlog">Dodaj czynnoość:</label>
-                            <textarea rows="8" name="actionlog" id="acitonlog" required></textarea>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="actionlog" name="actionlog" style="height: 200px" required></textarea>
+                            <label for="actionlog">Dodaj czynność</label>
                         </div>
                         <div class="row col-lg-3 col-sm-6 justify-content-start p-2">
                             <label for="jobenddate" class="form-label">Data wykonania czynności</label>
