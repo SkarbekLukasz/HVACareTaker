@@ -164,5 +164,7 @@
                                  constraintName="fk_userol_on_user" referencedColumnNames="id"
                                  referencedTableName="users"/>
     </changeSet>
-
+    <changeSet id="1648494924555-20" author="Luke">
+        <sqlFile path="data.sql"/>
+    </changeSet>
 </databaseChangeLog>
