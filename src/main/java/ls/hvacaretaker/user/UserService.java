@@ -23,7 +23,7 @@ public class UserService {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        user.setAccountActivation(false);
+        user.setAccountActivation(true);
         user.setAccountExpiration(true);
         user.setAccountLock(true);
         user.setCredentialExpiration(true);

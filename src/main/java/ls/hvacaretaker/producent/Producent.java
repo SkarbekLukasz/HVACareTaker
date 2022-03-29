@@ -15,7 +15,7 @@ public class Producent {
     private Long id;
     @Column(nullable = false, unique = true)
     private String name;
-    @Column(length = 1024)
+    @Column(length = 1024, name = "contact_info")
     private String contactInfo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "producent")
     private List<Device> devices;

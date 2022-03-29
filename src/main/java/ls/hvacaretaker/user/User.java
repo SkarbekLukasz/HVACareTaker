@@ -21,9 +21,13 @@ public class User {
     private String firstName;
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
+    @Column(name = "account_expiration")
     private boolean accountExpiration;
+    @Column(name = "account_lock")
     private boolean accountLock;
+    @Column(name = "credential_expiration")
     private boolean credentialExpiration;
+    @Column(name = "account_activation")
     private boolean accountActivation;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",

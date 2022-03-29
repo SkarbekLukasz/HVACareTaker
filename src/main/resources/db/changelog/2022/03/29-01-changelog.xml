@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1648494924555-1" author="Luke (generated)">
+    <changeSet id="1648591191972-1" author="Luke (generated)">
         <createTable tableName="category">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_category"/>
@@ -16,7 +16,7 @@
             <column name="description" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-2" author="Luke (generated)">
+    <changeSet id="1648591191972-2" author="Luke (generated)">
         <createTable tableName="device">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_device"/>
@@ -34,7 +34,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="producent_id" type="BIGINT"/>
-            <column name="value" type="DOUBLE"/>
+            <column name="device_value" type="DOUBLE"/>
             <column name="cooling_power" type="DOUBLE"/>
             <column name="refrigerant_id" type="BIGINT"/>
             <column name="refrigerant_mass" type="DOUBLE"/>
@@ -44,7 +44,7 @@
             <column name="next_control" type="DATE"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-3" author="Luke (generated)">
+    <changeSet id="1648591191972-3" author="Luke (generated)">
         <createTable tableName="job">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_job"/>
@@ -57,7 +57,7 @@
             <column name="device_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-4" author="Luke (generated)">
+    <changeSet id="1648591191972-4" author="Luke (generated)">
         <createTable tableName="producent">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_producent"/>
@@ -68,7 +68,7 @@
             <column name="contact_info" type="VARCHAR(1024)"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-5" author="Luke (generated)">
+    <changeSet id="1648591191972-5" author="Luke (generated)">
         <createTable tableName="refrigerant">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_refrigerant"/>
@@ -79,7 +79,7 @@
             <column name="gwp" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-6" author="Luke (generated)">
+    <changeSet id="1648591191972-6" author="Luke (generated)">
         <createTable tableName="roles">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles"/>
@@ -87,7 +87,7 @@
             <column name="name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-7" author="Luke (generated)">
+    <changeSet id="1648591191972-7" author="Luke (generated)">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
@@ -110,7 +110,7 @@
             <column name="account_activation" type="BOOLEAN"/>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-8" author="Luke (generated)">
+    <changeSet id="1648591191972-8" author="Luke (generated)">
         <createTable tableName="users_roles">
             <column name="role_id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_roles"/>
@@ -120,51 +120,49 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="1648494924555-9" author="Luke (generated)">
+    <changeSet id="1648591191972-9" author="Luke (generated)">
         <addUniqueConstraint columnNames="name" constraintName="uc_category_name" tableName="category"/>
     </changeSet>
-    <changeSet id="1648494924555-10" author="Luke (generated)">
-        <addUniqueConstraint columnNames="serial_number" constraintName="uc_device_serialnumber" tableName="device"/>
+    <changeSet id="1648591191972-10" author="Luke (generated)">
+        <addUniqueConstraint columnNames="serial_number" constraintName="uc_device_serial_number" tableName="device"/>
     </changeSet>
-    <changeSet id="1648494924555-11" author="Luke (generated)">
+    <changeSet id="1648591191972-11" author="Luke (generated)">
         <addUniqueConstraint columnNames="name" constraintName="uc_producent_name" tableName="producent"/>
     </changeSet>
-    <changeSet id="1648494924555-12" author="Luke (generated)">
+    <changeSet id="1648591191972-12" author="Luke (generated)">
         <addUniqueConstraint columnNames="name" constraintName="uc_refrigerant_name" tableName="refrigerant"/>
     </changeSet>
-    <changeSet id="1648494924555-13" author="Luke (generated)">
+    <changeSet id="1648591191972-13" author="Luke (generated)">
         <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
     </changeSet>
-    <changeSet id="1648494924555-14" author="Luke (generated)">
+    <changeSet id="1648591191972-14" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="device"
                                  constraintName="FK_DEVICE_ON_CATEGORY" referencedColumnNames="id"
                                  referencedTableName="category"/>
     </changeSet>
-    <changeSet id="1648494924555-15" author="Luke (generated)">
+    <changeSet id="1648591191972-15" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="producent_id" baseTableName="device"
                                  constraintName="FK_DEVICE_ON_PRODUCENT" referencedColumnNames="id"
                                  referencedTableName="producent"/>
     </changeSet>
-    <changeSet id="1648494924555-16" author="Luke (generated)">
+    <changeSet id="1648591191972-16" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="refrigerant_id" baseTableName="device"
                                  constraintName="FK_DEVICE_ON_REFRIGERANT" referencedColumnNames="id"
                                  referencedTableName="refrigerant"/>
     </changeSet>
-    <changeSet id="1648494924555-17" author="Luke (generated)">
+    <changeSet id="1648591191972-17" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="device_id" baseTableName="job" constraintName="FK_JOB_ON_DEVICE"
                                  referencedColumnNames="id" referencedTableName="device"/>
     </changeSet>
-    <changeSet id="1648494924555-18" author="Luke (generated)">
+    <changeSet id="1648591191972-18" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="users_roles"
                                  constraintName="fk_userol_on_role" referencedColumnNames="id"
                                  referencedTableName="roles"/>
     </changeSet>
-    <changeSet id="1648494924555-19" author="Luke (generated)">
+    <changeSet id="1648591191972-19" author="Luke (generated)">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_roles"
                                  constraintName="fk_userol_on_user" referencedColumnNames="id"
                                  referencedTableName="users"/>
     </changeSet>
-    <changeSet id="1648494924555-20" author="Luke">
-        <sqlFile path="data.sql"/>
-    </changeSet>
+
 </databaseChangeLog>

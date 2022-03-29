@@ -22,20 +22,23 @@ public class Device {
     private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "serial_number")
     private String serialNumber;
     @Column(nullable = false)
     private String model;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "production_date")
     private LocalDate productionDate;
     @ManyToOne
     @JoinColumn(name = "producent_id")
     private Producent producent;
+    @Column(name = "device_value")
     private Double value;
+    @Column(name = "cooling_power")
     private Double coolingPower;
     @ManyToOne
     @JoinColumn(name = "refrigerant_id")
     private Refrigerant refrigerant;
+    @Column(name = "refrigerant_mass")
     private Double refrigerantMass;
     private String localization;
     @ManyToOne
