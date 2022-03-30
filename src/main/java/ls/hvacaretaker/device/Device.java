@@ -5,8 +5,6 @@ import ls.hvacaretaker.job.Job;
 import ls.hvacaretaker.job.JobType;
 import ls.hvacaretaker.producent.Producent;
 import ls.hvacaretaker.refrigerant.Refrigerant;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDate;

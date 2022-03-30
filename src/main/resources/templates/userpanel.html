@@ -31,8 +31,48 @@
                 <a href="/userpanel/searchrefrigerant" th:href="@{/userpanel/searchrefrigerant}" class="btn btn-success me-3">Wyszukaj czynnik chłodniczy</a>
                 <hr class="my-2">
             </div>
-            <div class="d-grid col-8 offset-2">
+            <div class="d-grid col-8 offset-2 py-4">
                 <!--do wstawienia statystyki bazy danych, może zbliżające się kontrole szczelności-->
+                <div th:if="${!hermetictests.isEmpty()}">
+                    <h3>Zbliżające się kontrole szczelności:</h3>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Numer seryjny</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Producent</th>
+                            <th scope="col">Data kontroli</th>
+                            <th scope="col">Wyświetlanie</th>
+                        </tr>
+                        </thead>
+                        <tbody th:remove="all-but-first">
+                        <tr th:each="device : ${hermetictests}">
+                            <th scope="row" th:text="${device.id}">1</th>
+                            <td th:text="${device.name}">Agregat Carrier 30KAV</td>
+                            <td th:text="${device.serialNumber}">12345678</td>
+                            <td th:text="${device.model}">30KAV</td>
+                            <td th:text="${device.producent.name}">Carrier</td>
+                            <td class="bg-danger" th:text="${device.nextHermeticControl}">Carrier</td>
+                            <td>
+                                <a href="#" th:href="@{|/userpanel/device/${device.id}/view|}">Wyświetl</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Agregat Carrier 30KAV</td>
+                            <td>12345678</td>
+                            <td>30KAV</td>
+                            <td>Carrier</td>
+                            <td>
+                                <a href="#">Wyświetl</a>
+                                <a href="#">Usuń</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
         <th:block th:replace="fragment/fragments :: common-footer-fixed"></th:block>
