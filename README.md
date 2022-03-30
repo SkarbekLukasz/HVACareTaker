@@ -11,3 +11,5 @@ Technologies
 - Spring (Web, Security, Data JPA, Boot Devtools, H2 DB, MySQL DB, Spring Mail)
 - Maven
 - Git VCS
+- Liquibase
+- MySQL
