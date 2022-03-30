@@ -45,10 +45,8 @@ public class HermeticTestCheck {
                 String topic = "Kontrola szczelności " + device.getName();
                 String body = "W dniu " + device.getNextHermeticControl() + " mija termin wykonania kolejnej kontroli szczelności dla urządzenia " + device.getName() + ", o numerze seryjnym " + device.getSerialNumber();
                 emailService.sendMail(email, topic, body);
-                System.out.println("Komunikat");
             }
         }
-        System.out.println("Komunikat");
         Thread.sleep(DAY_TIME);
         hermeticTestReminder();
     }
