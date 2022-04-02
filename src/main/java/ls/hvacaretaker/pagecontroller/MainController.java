@@ -53,7 +53,7 @@ public class MainController {
                                      @RequestParam String topicinput,
                                      @RequestParam String messageinfo,
                                      Model model) {
-        emailService.sendMail(emailinput, topicinput, messageinfo);
+        emailService.sendMail("hvacaretaker@gmail.com", topicinput + " " + emailinput, messageinfo);
         model.addAttribute("message", new Message("Sukces!", "Wiadomość wysłana pomyślnie."));
         return "message";
     }
