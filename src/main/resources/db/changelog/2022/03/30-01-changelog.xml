@@ -89,5 +89,4 @@
             <column name="user_id" valueNumeric="1"/>
         </insert>
     </changeSet>
-
 </databaseChangeLog>
