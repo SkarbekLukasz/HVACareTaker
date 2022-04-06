@@ -50,4 +50,10 @@ public class DeviceService {
         Optional<Device> deviceById = deviceRepository.findById(id);
         deviceRepository.delete(deviceById.orElseThrow(DeviceNotFoundException::new));
     }
+
+    public List<DeviceDto> findAllDevices() {
+        return deviceRepository.findAll().stream()
+                .map(deviceMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

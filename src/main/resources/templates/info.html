@@ -1,0 +1,59 @@
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/40c5d73e0b.js" crossorigin="anonymous"></script>
+    <title>Informacje - HVACareTaker</title>
+</head>
+<body class="d-grid">
+    <div class="container">
+        <th:block th:replace="fragment/fragments :: common-header"></th:block>
+        <main>
+            <div class="text-center py-4 px-5 justify-content-center">
+                <div class="col-md-auto col-lg-12 mb-4 border-bottom">
+                    <h1 class="mb-3">
+                        Informacje o projekcie
+                    </h1>
+                    <p>
+                        Aplikacja <b>HVACareTaker</b> powstała w ramach samodoskonalenia w zakresie projektowania i programowania aplikacji opartych na obiektowym języku programowania <b>Java</b> oraz jego framework'u <b>Spring</b>,a takze innych twoarzyszących technologii.
+                    </p>
+                    <p>
+                        <b>Produkcyjnym</b> celem aplikacji jest realizacja zadań obecnych w codziennej pracy <b>techników i inżynierów</b> odpowiedzialnych za utrzymanie w ruchu urządzeń wentylacyjnych i klimatyzacyjnych w obsługiwanych obiektach.
+                    </p>
+                    <p>
+                        <b>Merytorycznym</b> celem aplikacji jest przyswojenie i zastosowanie w praktyce zdobytej wiedzy z zakresu projektowania apliakcji webowych, a także jej rozwój i rozbudowę o kolejne funkcjonalności/technologie obecne w pracy na stanowisku <b>Software Developera</b>. Jest też miejscem testów niewykorzystywanych wcześniej rozwiązań i możliwości, które daje pakiet zależności <b>Spring Boot</b>.
+                    </p>
+
+                </div>
+            </div>
+            <div class="mb-2 pt-2 pb-2 shadow rounded">
+                <span><b>Technologie wykorzystywane w aplikacji:</b></span>
+                <ul>
+                    <li>Java 11</li>
+                    <li>Spring Boot 2.6.4</li>
+                    <li>Thymeleaf</li>
+                    <li>Spring Security</li>
+                    <li>Spring Data JPA</li>
+                    <li>Spring Web</li>
+                    <li>Spring DevTools</li>
+                    <li>Spring Mail</li>
+                    <li>Spring Validation</li>
+                    <li>Maven</li>
+                    <li>Git&GitHub</li>
+                    <li>H2 Database</li>
+                    <li>MySQL</li>
+                    <li>Liquibase</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Bootstrap</li>
+                    <li>Font Awesome</li>
+                </ul>
+            </div>
+        </main>
+        <th:block th:replace="fragment/fragments :: common-footer-unfixed"></th:block>
+    </div>
+</body>
+</html>

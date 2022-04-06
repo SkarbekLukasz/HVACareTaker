@@ -57,4 +57,9 @@ public class MainController {
         model.addAttribute("message", new Message("Sukces!", "Wiadomość wysłana pomyślnie."));
         return "message";
     }
+
+    @GetMapping("/info")
+    public String getInfoPage() {
+        return "info";
+    }
 }
