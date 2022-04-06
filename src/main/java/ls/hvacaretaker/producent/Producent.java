@@ -3,6 +3,9 @@ package ls.hvacaretaker.producent;
 import ls.hvacaretaker.device.Device;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 

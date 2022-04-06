@@ -19,6 +19,7 @@
                 <label class="col-4 col-form-label">E-mail: </label>
                 <div class="col-8">
                     <input type="email" th:field="*{email}" class="form-control" required />
+                    <p th:errors="*{email}" class="error"></p>
                 </div>
             </div>
 
@@ -26,7 +27,8 @@
                 <label class="col-4 col-form-label">Hasło: </label>
                 <div class="col-8">
                     <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" th:field="*{password}" class="form-control"
-                           required minlength="8" maxlength="20"/>
+                           required/>
+                    <p th:errors="*{password}" class="error"></p>
                 </div>
             </div>
 
@@ -34,7 +36,8 @@
                 <label class="col-4 col-form-label">Imię: </label>
                 <div class="col-8">
                     <input type="text" th:field="*{firstName}" class="form-control"
-                           required minlength="2" maxlength="20"/>
+                           required min="2" max="20"/>
+                    <p th:errors="*{firstName}" class="error"></p>
                 </div>
             </div>
 
@@ -42,7 +45,8 @@
                 <label class="col-4 col-form-label">Nazwisko: </label>
                 <div class="col-8">
                     <input type="text" th:field="*{lastName}" class="form-control"
-                           required minlength="2" maxlength="20" />
+                           required min="2" max="20"/>
+                    <p th:errors="*{lastName}" class="error"></p>
                 </div>
             </div>
 

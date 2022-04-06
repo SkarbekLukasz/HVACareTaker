@@ -5,12 +5,11 @@ import ls.hvacaretaker.user.User;
 import ls.hvacaretaker.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.management.relation.RoleNotFoundException;
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -27,16 +26,20 @@ public class UserController {
     }
 
     @PostMapping("/process_register")
-    public String processRegister(User user, Model model) {
-        try {
-            userService.saveNewUser(user);
-        } catch (RoleNotFoundException e) {
-            model.addAttribute("message", new Message("Błąd", e.getMessage()));
+    public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            return "register";
+        } else {
+            try {
+                userService.saveNewUser(user);
+            } catch (RoleNotFoundException e) {
+                model.addAttribute("message", new Message("Błąd", e.getMessage()));
+                return "message";
+            }
+
+            model.addAttribute("message", new Message("Sukces!", "Pomyślnie zarejestrowano nowego użytkownika."));
             return "message";
         }
-
-        model.addAttribute("message", new Message("Sukces!", "Pomyślnie zarejestrowano nowego użytkownika."));
-        return "message";
     }
 
     @GetMapping("/user/{id}/changepassword")
