@@ -1,8 +1,6 @@
 package ls.hvacaretaker.pagecontroller;
 
 import ls.hvacaretaker.common.Message;
-import ls.hvacaretaker.producent.ProducentDto;
-import ls.hvacaretaker.producent.ProducentNotFoundException;
 import ls.hvacaretaker.refrigerant.RefrigerantDto;
 import ls.hvacaretaker.refrigerant.RefrigerantNotFoundException;
 import ls.hvacaretaker.refrigerant.RefrigerantService;

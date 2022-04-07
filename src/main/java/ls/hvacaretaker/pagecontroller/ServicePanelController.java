@@ -4,7 +4,6 @@ import ls.hvacaretaker.common.Message;
 import ls.hvacaretaker.device.DeviceDto;
 import ls.hvacaretaker.device.DeviceNotFoundException;
 import ls.hvacaretaker.device.DeviceService;
-import ls.hvacaretaker.job.JobDto;
 import ls.hvacaretaker.job.JobService;
 import ls.hvacaretaker.job.JobType;
 import ls.hvacaretaker.security.CustomUserDetails;

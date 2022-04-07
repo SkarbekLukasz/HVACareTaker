@@ -4,7 +4,6 @@ import ls.hvacaretaker.device.Device;
 import ls.hvacaretaker.device.DeviceRepository;
 import ls.hvacaretaker.user.User;
 import ls.hvacaretaker.user.UserRepository;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 

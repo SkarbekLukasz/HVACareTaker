@@ -1,7 +1,5 @@
 package ls.hvacaretaker.category;
 
-import ls.hvacaretaker.producent.Producent;
-import ls.hvacaretaker.producent.ProducentNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
