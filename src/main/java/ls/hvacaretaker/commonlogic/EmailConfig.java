@@ -8,9 +8,17 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
+/**
+ * Klasa konfiguracji dla Java Mail Sender.
+ */
 @Configuration
 public class EmailConfig {
 
+    /**
+     * Konfiguracja połączenia z serwerem smtp.
+     *
+     * @return obiekt JavaMailSender
+     */
     @Bean
     public JavaMailSender getJavaMailSender()
     {
@@ -30,6 +38,11 @@ public class EmailConfig {
         return mailSender;
     }
 
+    /**
+     * Szablon nowej wiadomości email z możliwością ustawienia adresu odbiorcy, adresu nadawcy, i treści wiadomości.
+     *
+     * @return the simple mail message
+     */
     @Bean
     public SimpleMailMessage emailTemplate()
     {
