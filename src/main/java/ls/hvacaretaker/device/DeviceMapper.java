@@ -2,9 +2,22 @@ package ls.hvacaretaker.device;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Klasa mapująca encje do obiektów DTO i na odwrót.
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Service
 public class DeviceMapper {
 
+    /**
+     * Metoda zamieniająca obiekt encji do obiektu DTO
+     *
+     * @param device obiekt typu Device
+     * @return obiektu typu DTO
+     */
     public DeviceDto toDto(Device device) {
         DeviceDto deviceToDto = new DeviceDto();
         deviceToDto.setId(device.getId());
@@ -25,6 +38,12 @@ public class DeviceMapper {
         return deviceToDto;
     }
 
+    /**
+     * Zamienia obiekt typu DeviceDto na obiekt encji.
+     *
+     * @param deviceDto obiekt typu DeviceDto
+     * @return encja obiektu Device
+     */
     public Device toEntity(DeviceDto deviceDto) {
         Device entity = new Device();
         entity.setId(deviceDto.getId());

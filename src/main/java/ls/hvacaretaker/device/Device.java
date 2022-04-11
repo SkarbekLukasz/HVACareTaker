@@ -352,9 +352,9 @@ public class Device {
     }
 
     /**
-     * Add job.
-     *
-     * @param job the job
+     * Metoda sprawdza, czy dana czynność serwisowa jest kontrolą szczelności, następnie wylicza na podstawie GWP czasookres wykonywania kolejnych kontroli i oblicza datę.
+     * Na koniec obiekt typy Job zostaje dodany do pola jobList.
+     * @param job obiekt typu Job
      */
     public void addJob(Job job) {
         if(job.getJobType().equals(JobType.HERMETICTEST)) {
