@@ -12,15 +12,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * Kontroler obsługujący adresy /userpanel/searchdevice
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class SearchDeviceController {
 
     private final DeviceService deviceService;
 
+    /**
+     * Konstruktor wstrzyykujący zależności
+     *
+     * @param deviceService Warstwa usług type Device
+     */
     public SearchDeviceController(DeviceService deviceService) {
         this.deviceService = deviceService;
     }
 
+    /**
+     * Wyszukuje i przesyła do modelu widoku listę wskazanych urządzeń.
+     * Zwraca szablon widoku /searchdevice
+     *
+     * @param search wyszukiwana fraza
+     * @param model  model widoku
+     * @return szablon widoku /searchdevice
+     */
     @GetMapping("/userpanel/searchdevice")
     public String getSearchDevice(@RequestParam(required = false) String search, Model model) {
         if(search != null) {
@@ -31,6 +51,13 @@ public class SearchDeviceController {
         return "searchdevice";
     }
 
+    /**
+     * Wyświetla szczegółowe dane na temat urządzenia o wskazanym id.
+     *
+     * @param id    id urządzenia
+     * @param model model widoku
+     * @return szablon widoku /viewdevice
+     */
     @GetMapping("/userpanel/device/{id}/view")
     public String viewDevice(@PathVariable Long id, Model model) {
         DeviceDto deviceFound;
@@ -44,6 +71,13 @@ public class SearchDeviceController {
         return "viewdevice";
     }
 
+    /**
+     * Metoda pozwala na usunięcie urządzenia o wskazanym id z bazy danych.
+     *
+     * @param id    id urządzenia
+     * @param model model widoku
+     * @return szablon widoku /message
+     */
     @GetMapping("/userpanel/device/{id}/delete")
     public String deleteDevice(@PathVariable Long id, Model model) {
         try {

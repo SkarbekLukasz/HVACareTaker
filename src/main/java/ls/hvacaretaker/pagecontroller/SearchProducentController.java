@@ -12,15 +12,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * Kontroler obsługujący adresy /userpanel/searchproducent
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class SearchProducentController {
 
     private final ProducentService producentService;
 
+    /**
+     * Konstruktor wstrzyykujący zależności
+     *
+     * @param producentService warstwa usług typu Producent
+     */
     public SearchProducentController(ProducentService producentService) {
         this.producentService = producentService;
     }
 
+    /**
+     * Wyszukuje i przesyła do modelu widoku listę wskazanych producentów
+     * Zwraca szablon widoku /searchproducent
+     *
+     * @param search wyszukiwana fraza
+     * @param model  model widoku
+     * @return szablon widoku /searchproducent
+     */
     @GetMapping("/userpanel/searchproducent")
     public String getSearchProducent(@RequestParam(required = false) String search, Model model) {
         if(search != null) {
@@ -32,6 +52,13 @@ public class SearchProducentController {
         return "searchproducent";
     }
 
+    /**
+     * Wyświetla szczegółowe dane na temat producenta o wskazanym id.
+     *
+     * @param id    id producenta
+     * @param model model widoku
+     * @return szablon widoku /viewproducent
+     */
     @GetMapping("/userpanel/producent/{id}/view")
     public String viewProducentDetails(@PathVariable Long id, Model model) {
         ProducentDto producentFound;
@@ -45,6 +72,13 @@ public class SearchProducentController {
         return "viewproducent";
     }
 
+    /**
+     * Metoda pozwala na usunięcie producenta o wskazanym id z bazy danych.
+     *
+     * @param id    id producenta
+     * @param model model widoku
+     * @return szablon widoku /message
+     */
     @GetMapping("/userpanel/producent/{id}/delete")
     public String deleteProducent(@PathVariable Long id, Model model) {
         try {
