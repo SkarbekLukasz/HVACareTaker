@@ -4,7 +4,6 @@ import ls.hvacaretaker.device.Device;
 import ls.hvacaretaker.device.DeviceRepository;
 import ls.hvacaretaker.user.User;
 import ls.hvacaretaker.user.UserRepository;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +11,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Klasa odpowiedzialna za sprawdzanie terminów kontroli szczelności.
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Component
 public class HermeticTestCheck {
     private final DeviceRepository deviceRepository;
@@ -19,6 +25,13 @@ public class HermeticTestCheck {
     private final EmailService emailService;
     private final int DAY_TIME = 86400000;
 
+    /**
+     * Konstruktor klasy, wstrzykujący poniższe zależności.
+     *
+     * @param deviceRepository repozytorium obiektów typu Device
+     * @param userRepository   repozytorium obiektów typu User
+     * @param emailService     klasa usług wysyłki maili
+     */
     public HermeticTestCheck(DeviceRepository deviceRepository, UserRepository userRepository, EmailService emailService) {
         this.deviceRepository = deviceRepository;
         this.userRepository = userRepository;
@@ -26,6 +39,11 @@ public class HermeticTestCheck {
     }
 
 
+    /**
+     * Wyszykuje w bazie danych kontrole szczelności, dla których termin wykonania jest krótszy, niż 2 tygodnie.
+     *
+     * @return lista obiektów typu Device, dla których termin kontroli szczelności jest krótszy, niż 2 tygodnie.
+     */
     public List<Device> findIncomingTests() {
         return deviceRepository.findAll().stream()
                 .filter(device -> device.getNextHermeticControl() != null)
@@ -33,6 +51,12 @@ public class HermeticTestCheck {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Raz w ciągu 24 godzin metoda sprawdza, czy są kontrole szczelności o terminie odległym równo 2 tygodnie od daty sprawdzenia.
+     * Dla znalezionych pozycji wysyłane są maile przypominające do wszystkich użytkowników z bazy danych.
+     * Metoda rekurencyjna.
+     * @throws InterruptedException wyjątek występujący w momencie przerwania pracy wątku.
+     */
     @Async
     public void hermeticTestReminder() throws InterruptedException{
         List<Device> incomingHermeticTests = deviceRepository.findAll().stream()

@@ -1,8 +1,6 @@
 package ls.hvacaretaker.pagecontroller;
 
 import ls.hvacaretaker.common.Message;
-import ls.hvacaretaker.producent.ProducentDto;
-import ls.hvacaretaker.producent.ProducentNotFoundException;
 import ls.hvacaretaker.refrigerant.RefrigerantDto;
 import ls.hvacaretaker.refrigerant.RefrigerantNotFoundException;
 import ls.hvacaretaker.refrigerant.RefrigerantService;
@@ -14,14 +12,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * Kontroler obsługujący adresy /userpanel/searchrefrigerant
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class SearchRefrigerantController {
     private final RefrigerantService refrigerantService;
 
+    /**
+     * Konstruktor wstrzyykujący zależności
+     *
+     * @param refrigerantService warstwa usług typu Refrigerant
+     */
     public SearchRefrigerantController(RefrigerantService refrigerantService) {
         this.refrigerantService = refrigerantService;
     }
 
+    /**
+     * Metoda wyszukuje czynnik chłodniczy na podstawie przekazanej w formularzu frazy.
+     *
+     * @param search wyszukiwana fraza
+     * @param model  model widoku
+     * @return szablon widoku /searchrefrigerant
+     */
     @GetMapping("/userpanel/searchrefrigerant")
     public String refrigerantSearchForm(@RequestParam(required = false) String search, Model model) {
         if(search != null) {
@@ -33,6 +50,14 @@ public class SearchRefrigerantController {
         return "searchrefrigerant";
     }
 
+    /**
+     * Wyszukuje czynnik chłodniczy o wskazanym id.
+     * Prezentuje szczegóły czynnika chłodniczego w widoku /viewrefrigerant.
+     *
+     * @param id    numer id
+     * @param model model widoku
+     * @return szablon widoku /viewrefrigerant
+     */
     @GetMapping("/userpanel/refrigerant/{id}/view")
     public String viewRefrigerant(@PathVariable Long id, Model model) {
         RefrigerantDto refrigerantDto;
@@ -46,6 +71,13 @@ public class SearchRefrigerantController {
         return "viewrefrigerant";
     }
 
+    /**
+     * Usuwa z bazy danych czynnik chłodniczy o wskazanym id.
+     *
+     * @param id    numer id
+     * @param model model widoku
+     * @return szablon widoku /message
+     */
     @GetMapping("/userpanel/refrigerant/{id}/delete")
     public String deleteRefrigerant(@PathVariable Long id, Model model) {
         try {

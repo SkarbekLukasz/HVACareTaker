@@ -9,19 +9,46 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Kontroler obsługujący adresy userpanel/addproducent
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class AddProducentController {
 
     private final ProducentService producentService;
 
+    /**
+     * Konstruktor wstrzyykujący zależności
+     *
+     * @param producentService warstwa usług typu Producent
+     */
     public AddProducentController(ProducentService producentService) {
         this.producentService = producentService;
     }
+
+    /**
+     * Obsługuje adres /userpanel/addproducent i zwraca szablon widoku /addproducent
+     *
+     * @param model model widoku
+     * @return szablon widoku /addproducent
+     */
     @GetMapping("/userpanel/addproducent")
     public String getAddProducent(Model model) {
         return "addproducent";
     }
 
+    /**
+     * Metoda obsługuje dodawanie nowego producenta przez formularz.
+     *
+     * @param producentname nazwa producenta
+     * @param contactInfo   dane kontaktowe producenta
+     * @param model         model widoku
+     * @return zwraca szablon widoku /message
+     */
     @PostMapping("/userpanel/addproducent/message")
     public String saveNewProducent(@RequestParam String producentname, @RequestParam String contactInfo, Model model) {
         if(producentname == null) {

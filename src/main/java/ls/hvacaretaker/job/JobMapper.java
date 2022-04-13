@@ -2,9 +2,22 @@ package ls.hvacaretaker.job;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Klasa mapująca encje do obiektów DTO i na odwrót.
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Service
 public class JobMapper {
 
+    /**
+     * Metoda zamieniająca obiekt encji do obiektu DTO
+     *
+     * @param job obiekt typu Job
+     * @return jobDto obiekt typu JobDto
+     */
     public JobDto toDto(Job job) {
         JobDto jobDto = new JobDto();
         jobDto.setId(job.getId());
@@ -17,6 +30,12 @@ public class JobMapper {
         return jobDto;
     }
 
+    /**
+     * Zamienia obiekt typu DeviceDto na obiekt encji.
+     *
+     * @param jobDto obiekt typu JobDto
+     * @return job obiekt typu Job
+     */
     public Job toEntity(JobDto jobDto) {
         Job job = new Job();
         job.setId(jobDto.getId());

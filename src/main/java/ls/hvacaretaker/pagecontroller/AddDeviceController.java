@@ -26,6 +26,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Kontroler obsługujący zapytania dla adresu userpanel/adddevice/*
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Controller
 public class AddDeviceController {
 
@@ -35,6 +42,15 @@ public class AddDeviceController {
     private final DeviceService deviceService;
 
 
+    /**
+     * Konstruktor wstrzykujący poniższe zależności
+     *
+     * @param categoryService     Klasa usług typu Category
+     * @param producentService    Klasa usług typu Producent
+     * @param refrigerantService  Klasa usług typu Refrigerant
+     * @param producentRepository Repozytorium typu Producent
+     * @param deviceService       Klasa usług typu Device
+     */
     public AddDeviceController(CategoryService categoryService, ProducentService producentService, RefrigerantService refrigerantService, ProducentRepository producentRepository, DeviceService deviceService) {
         this.categoryService = categoryService;
         this.producentService = producentService;
@@ -42,6 +58,16 @@ public class AddDeviceController {
         this.deviceService = deviceService;
     }
 
+    /**
+     * Metoda umożliwiająca przesłanie do widoku odpowednich danych do wyświetlenia formualrza dodawania nowego urządzenia.
+     * Jako parametry przyjmuje dane uzyskane w formularzu dodawania nowego urządzenia.
+     *
+     * @param categoryid   id kategorii urządzenia
+     * @param categoryname nazwa kategorii
+     * @param model        model widoku
+     * @param session      sesja użytkownika
+     * @return zwraca widok /addevice
+     */
     @GetMapping("/userpanel/adddevice")
     public String getAddDevice(@RequestParam(required = false) String categoryid, @RequestParam(required = false) String categoryname, Model model, HttpSession session) {
         List<Category> categoryList = categoryService.getAllCategories();
@@ -59,6 +85,25 @@ public class AddDeviceController {
         return "adddevice";
     }
 
+    /**
+     * Metoda zapisująca nowe urządzenie do bazy danych.
+     *
+     * Przyjmuje parametry uzyskane za pomocą formularza, następnie tworzy nowy obiekt typu Device i zapisuje w bazie danych.
+     *
+     * @param devicename   nazwa urządzenia
+     * @param serialnumber numer seryjny urządzenia
+     * @param devicemodel  model urządzenia
+     * @param date         data produkcji urządzenia
+     * @param producent    producent urządzenia
+     * @param cost         koszt urządzenia
+     * @param load         moc chłodnicza
+     * @param refrigerant  typ czynnika chłodniczego
+     * @param mass         ilość czynnika chłodniczeog
+     * @param localization lokalizacja urządzenia
+     * @param model        model widoku
+     * @param session      sesja użytkownika
+     * @return szablon widoku /message
+     */
     @PostMapping("/userpanel/adddevice/message")
     public String saveNewDevice(@RequestParam String devicename,
                                 @RequestParam String serialnumber,

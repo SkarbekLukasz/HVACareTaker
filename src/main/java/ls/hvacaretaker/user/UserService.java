@@ -1,6 +1,5 @@
 package ls.hvacaretaker.user;
 
-import ls.hvacaretaker.security.Role;
 import ls.hvacaretaker.security.RoleRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
