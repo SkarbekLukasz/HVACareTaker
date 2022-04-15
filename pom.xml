@@ -83,8 +83,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <imageName>ls.hvacaretaker/hvacaretaker-0.0.1-snapshot</imageName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

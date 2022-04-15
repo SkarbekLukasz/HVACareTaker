@@ -45,18 +45,18 @@ public class AddProducentController {
      * Metoda obsługuje dodawanie nowego producenta przez formularz.
      *
      * @param producentname nazwa producenta
-     * @param contactInfo   dane kontaktowe producenta
+     * @param contactinfo   dane kontaktowe producenta
      * @param model         model widoku
      * @return zwraca szablon widoku /message
      */
     @PostMapping("/userpanel/addproducent/message")
-    public String saveNewProducent(@RequestParam String producentname, @RequestParam String contactInfo, Model model) {
+    public String saveNewProducent(@RequestParam String producentname, @RequestParam String contactinfo, Model model) {
         if(producentname == null) {
             model.addAttribute("message", new Message("Błąd przy dodawaniu producenta", "Nie udało się pomyślnie dodać nowego producenta do bazy. Pole formularza było puste"));
             return "message";
         }
         try{
-            producentService.save(producentname, contactInfo);
+            producentService.save(producentname, contactinfo);
         } catch (ProducentAlreadyExistException e) {
             model.addAttribute("message", new Message("Błąd przy dodawaniu producenta", "Producent o wskazanej nazwie już istnieje w bazie danych."));
             return "message";
