@@ -2,9 +2,22 @@ package ls.hvacaretaker.refrigerant;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * Klasa mapująca obiekty Refrigerant do DTO i na odwrót.
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Service
 public class RefrigerantMapper {
 
+    /**
+     * Mapuje encje typu Refrigerant do obiektów DTO.
+     *
+     * @param refrigerant obiekt typu Refrigerant
+     * @return obiekty RefrigerantDto
+     */
     public RefrigerantDto toDto(Refrigerant refrigerant) {
         RefrigerantDto refrigerantToDto = new RefrigerantDto();
         refrigerantToDto.setId(refrigerant.getId());
@@ -14,6 +27,12 @@ public class RefrigerantMapper {
         return refrigerantToDto;
     }
 
+    /**
+     * Mapuje obiekty RefrigerantDto do encji Refrigerant
+     *
+     * @param refrigerantDto obiekt RefrigerantDto
+     * @return encja Refrigerant
+     */
     public Refrigerant toEntity(RefrigerantDto refrigerantDto) {
         Refrigerant refrigerant = new Refrigerant();
         refrigerant.setId(refrigerantDto.getId());
