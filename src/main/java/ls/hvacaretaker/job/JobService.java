@@ -12,6 +12,10 @@ import java.util.Optional;
 
 /**
  * Klasa warstwy usług typu Job
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
  */
 @Service
 public class JobService {
