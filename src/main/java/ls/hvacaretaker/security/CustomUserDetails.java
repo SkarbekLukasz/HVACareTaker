@@ -10,9 +10,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Klasa implementująca interfejs UserDetails z pakietu SpringSecurity
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 public class CustomUserDetails implements UserDetails {
     private final User user;
 
+    /**
+     * Konstruktor klasy CustomUserDetails
+     *
+     * @param user obiekt typu User
+     */
     public CustomUserDetails(User user) {
         this.user = user;
 
@@ -59,18 +71,38 @@ public class CustomUserDetails implements UserDetails {
         return user.isAccountActivation();
     }
 
+    /**
+     * Gets full name.
+     *
+     * @return the full name
+     */
     public String getFullName() {
         return user.getFirstName() + " " + user.getLastName();
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return user.getFirstName();
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return user.getLastName();
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return user.getId();
     }

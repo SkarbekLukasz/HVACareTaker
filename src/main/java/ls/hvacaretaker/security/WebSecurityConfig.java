@@ -11,7 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-
+/**
+ * Klasa konfiguracji WebSecurity
+ * Zawiera podstawowe ustawienia dotyczące uwierzytelnienia i autoryzacji w aplikacji.
+ *
+ * @author Luke
+ * @version 1.0
+ * @since 1.0
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -21,11 +28,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomUserDetailsService();
     }
 
+    /**
+     * Konstruktor nowego @Bean dla enkodera haseł dla użytkowników.
+     *
+     * @return obiekt enkodera haseł typu BCrypt
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Metoda ustawia parametry dla warstwy DaoAuthenticationProvider i zwraca skonfigurowany obiekt.
+     *
+     * @return obiekt typu DaoAuthenticationProvider
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
